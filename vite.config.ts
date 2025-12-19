@@ -5,9 +5,10 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  // Base path for GitHub Pages
-  // For local dev, you can temporarily change this to '/'
-  base: '/my-portfolio/',
+  // Base path: automatically detect platform
+  // GitHub Pages: '/my-portfolio/' (when GITHUB_ACTIONS is set)
+  // Netlify/Vercel/Local: '/' (default)
+  base: process.env.GITHUB_ACTIONS ? '/my-portfolio/' : '/',
   server: {
     host: "::",
     port: 8080,
