@@ -25,13 +25,150 @@ const HeroSection = () => {
     document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const handleResumeDownload = () => {
+    // Simple direct download approach
+    const link = document.createElement('a');
+    link.href = '/resume.pdf';
+    link.download = 'Mohammed_Salam_Resume.pdf';
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    document.body.appendChild(link);
+    link.click();
+    setTimeout(() => {
+      document.body.removeChild(link);
+    }, 100);
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background gradient orbs */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse-glow" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-primary/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
-        <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: "3s" }} />
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#8b5cf6_1px,transparent_1px),linear-gradient(to_bottom,#8b5cf6_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-[0.02]" />
+        
+        {/* Dynamic floating orbs with rotation */}
+        <motion.div
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl"
+          animate={{
+            x: [0, 120, -80, 0],
+            y: [0, -100, 110, 0],
+            scale: [1, 1.3, 0.9, 1],
+            rotate: [0, 180, 360],
+          }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-primary/12 rounded-full blur-3xl"
+          animate={{
+            x: [0, -120, 90, 0],
+            y: [0, 130, -70, 0],
+            scale: [1, 1.35, 0.85, 1],
+            rotate: [0, -180, -360],
+          }}
+          transition={{
+            duration: 35,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1.5,
+          }}
+        />
+        <motion.div
+          className="absolute top-1/2 right-1/3 w-64 h-64 bg-purple-500/12 rounded-full blur-3xl"
+          animate={{
+            x: [0, 80, -60, 0],
+            y: [0, -120, 95, 0],
+            scale: [1, 1.4, 0.8, 1],
+            rotate: [0, 360],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 3,
+          }}
+        />
+        
+        {/* Moving particles */}
+        {[...Array(10)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-2 h-2 rounded-full bg-primary/40"
+            style={{
+              left: `${10 + i * 8}%`,
+              top: `${10 + i * 8}%`,
+            }}
+            animate={{
+              y: [0, -150, 0],
+              x: [0, Math.sin(i) * 90, 0],
+              opacity: [0.4, 0.9, 0.4],
+              scale: [1, 2.2, 1],
+            }}
+            transition={{
+              duration: 6 + i * 0.4,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.2,
+            }}
+          />
+        ))}
+        
+        {/* Rotating shapes */}
+        <motion.div
+          className="absolute top-1/3 right-1/5 w-32 h-32 border-2 border-primary/30 rounded-lg"
+          animate={{
+            rotate: [0, 360],
+            scale: [1, 1.4, 1],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/3 left-1/5 w-24 h-24 border-2 border-purple-400/30 rounded-full"
+          animate={{
+            rotate: [360, 0],
+            scale: [1, 1.5, 1],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "linear",
+            delay: 1,
+          }}
+        />
+        
+        {/* Animated gradient lines */}
+        <motion.div
+          className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
+          animate={{
+            x: ["-100%", "100%"],
+            opacity: [0.2, 0.7, 0.2],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-400/30 to-transparent"
+          animate={{
+            x: ["100%", "-100%"],
+            opacity: [0.2, 0.7, 0.2],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "linear",
+            delay: 2,
+          }}
+        />
       </div>
 
       {/* Floating tech icons */}
@@ -72,10 +209,10 @@ const HeroSection = () => {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
             className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight"
           >
-            <span className="text-foreground">Senior </span>
+            <span className="text-foreground">Mid </span>
             <span className="text-gradient">Flutter</span>
             <br />
             <span className="text-foreground">& Frontend Developer</span>
@@ -111,12 +248,10 @@ const HeroSection = () => {
               size="lg"
               variant="outline"
               className="px-8 py-6 text-lg font-semibold border-primary/30 hover:bg-primary/10"
-              asChild
+              onClick={handleResumeDownload}
             >
-              <a href="/resume.pdf" download>
-                <Download className="mr-2 h-5 w-5" />
-                Download Resume
-              </a>
+              <Download className="mr-2 h-5 w-5" />
+              Download Resume
             </Button>
           </motion.div>
 
@@ -127,7 +262,7 @@ const HeroSection = () => {
             className="flex items-center justify-center gap-6"
           >
             <a
-              href="https://github.com"
+              href="https://github.com/mohammedsalam22"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 rounded-full bg-card border border-border hover:border-primary/50 hover:bg-primary/10 transition-all duration-300"
@@ -143,7 +278,7 @@ const HeroSection = () => {
               <Linkedin className="h-5 w-5" />
             </a>
             <a
-              href="mailto:hello@example.com"
+              href="mailto:ms6960852@gmail.com"
               className="p-3 rounded-full bg-card border border-border hover:border-primary/50 hover:bg-primary/10 transition-all duration-300"
             >
               <Mail className="h-5 w-5" />

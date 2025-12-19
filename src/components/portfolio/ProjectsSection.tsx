@@ -1,33 +1,102 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight, Activity, Pill, Warehouse } from "lucide-react";
+import { ArrowUpRight, Activity, Pill, Warehouse, School, Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const projects = [
   {
     id: 1,
+    icon: Home,
+    title: "Property E-commerce Application",
+    subtitle: "Real Estate Platform with Social Features",
+    overview: "Real estate e-commerce platform with social features, property search, saved listings, real-time messaging, and user interaction capabilities.",
+    problem: "Traditional real estate platforms lacked social engagement features, making it difficult for users to interact, share properties, and communicate in real-time with other users and property owners.",
+    solution: "Developed a comprehensive e-commerce application with social networking capabilities including posts, comments, and interactions to enhance user engagement. Implemented advanced search functionality and saved property features to improve user experience and content accessibility. Designed real-time notification system and messaging functionality using WebSocket for seamless communication. Built follow request system to manage connections between users and create a social network within the platform. Utilized Laravel for robust backend development and Flutter for dynamic and responsive frontend interface. Applied efficient database management and optimized API performance for scalability and reliability.",
+    features: [
+      "Property Search & Filtering",
+      "Saved Property Listings",
+      "Social Posts & Comments",
+      "User Interactions & Engagement",
+      "Real-time Messaging System",
+      "Follow Request System",
+      "Real-time Notifications",
+      "User Profile Management",
+    ],
+    technologies: ["Flutter", "Laravel", "PHP", "WebSocket", "Real-time Messaging"],
+    impact: [
+      "Enhanced user engagement through social features",
+      "Improved property discovery with advanced search",
+      "Enabled real-time communication between users",
+      "Created social network within the platform",
+      "Optimized performance for scalability",
+    ],
+    gradient: "from-green-500 via-emerald-500 to-teal-500",
+  },
+  {
+    id: 2,
+    icon: School,
+    title: "School Ecosystem Management System",
+    subtitle: "Full-Scale Educational Platform (Web & Mobile)",
+    overview: "A comprehensive full-scale school ecosystem platform designed to digitally manage all school operations from A to Z. The system consists of a web application for school staff and mobile applications for parents and receptionists, all connected through real-time data synchronization.",
+    problem: "Schools struggled with manual, paper-based workflows, fragmented communication between parents and staff, lack of real-time visibility into student performance, and inefficient administrative operations across multiple departments.",
+    solution: "Built an enterprise-level multi-platform ecosystem with a centralized web administration panel for school staff and mobile applications for parents and receptionists. Implemented real-time synchronization between all platforms with advanced offline-first architecture for mobile apps, including robust sync strategies to handle offline scenarios seamlessly. Designed comprehensive role-based access control and modular architecture for high-volume daily usage. The system handles student registration, placement tests, attendance tracking, test creation and grading, homework management, incident reporting, accounting, and full CRUD operations for staff with granular permissions. Mobile applications feature intelligent offline data caching and conflict resolution strategies ensuring data consistency when connectivity is restored.",
+    features: [
+      "Web Admin Panel (Staff/Teachers/Receptionists)",
+      "Mobile Apps (Parents/Receptionists)",
+      "Student Registration & Profile Management",
+      "Placement Test System",
+      "Attendance Tracking (Students & Staff)",
+      "Test Creation, Grading & Reporting",
+      "Homework Management & Evaluation",
+      "Incident Reporting & History",
+      "Accounting & Financial Management",
+      "Staff CRUD with Role-Based Permissions",
+      "Real-time Data Synchronization",
+      "Offline-First Mobile Architecture",
+      "Advanced Sync Strategies & Conflict Resolution",
+      "Direct Messaging & Announcements",
+      "Live Notifications System",
+    ],
+    technologies: ["Flutter", "React", "Django", "WebSocket", "SQLite", "BLoC", "Redux"],
+    impact: [
+      "Eliminated manual and paper-based school workflows",
+      "Improved communication between parents and school staff",
+      "Increased transparency and trust through real-time visibility",
+      "Enabled instant access to student performance and behavior data",
+      "Streamlined administrative and academic operations",
+      "Designed for enterprise-level educational institutions",
+    ],
+    gradient: "from-blue-500 via-indigo-500 to-purple-500",
+  },
+  {
+    id: 3,
     icon: Activity,
     title: "Hospital Management System",
     subtitle: "Enterprise Automation Platform",
-    overview: "A comprehensive hospital automation system designed to centralize and streamline hospital operations, improving efficiency across all departments.",
+    overview: "Comprehensive hospital management system automating operations across all departments including patient records, laboratory workflows, ICU, and operating rooms with real-time notifications.",
     problem: "Hospitals faced fragmented systems causing communication delays, manual errors, and lack of real-time visibility into operations.",
-    solution: "Built a unified platform with real-time WebSocket notifications, role-based access control, and modular architecture for seamless scalability.",
+    solution: "Designed and implemented an automated comprehensive hospital management system covering key departments: employee records, patient records, laboratory and radiology workflows, patient rooms, ICU, and operating rooms. Built consultation, referral, and patient file retrieval system to streamline operations. Integrated WebSocket technology for real-time notifications, applied modular design principles and layered architecture for scalability, enhanced data security with role-based authentication, and optimized performance through efficient database design.",
     features: [
-      "Employee & Patient Management",
-      "Laboratory & Radiology Systems",
-      "ICU & Room Management",
+      "Employee & Patient Records Management",
+      "Laboratory & Radiology Workflows",
+      "Patient Rooms & ICU Management",
       "Operating Room Scheduling",
-      "Real-time Notifications",
+      "Consultation & Referral System",
+      "Patient File Retrieval System",
+      "Real-time WebSocket Notifications",
+      "Role-based Access Control",
     ],
-    technologies: ["Flutter", "BLoC", "WebSocket", "SQLite", "Clean Architecture"],
+    technologies: ["Flutter", "Node.js", "Express.js", "WebSocket", "PostgreSQL"],
     impact: [
-      "40% reduction in operational delays",
-      "Real-time cross-department visibility",
-      "Improved patient care coordination",
+      "40% reduction in operational delays through automation",
+      "Real-time cross-department visibility and communication",
+      "Improved patient care coordination and workflow efficiency",
+      "Enhanced data security with role-based authentication",
+      "Optimized system performance through efficient database design",
     ],
     gradient: "from-red-500 via-pink-500 to-primary",
   },
   {
-    id: 2,
+    id: 4,
     icon: Pill,
     title: "Pharmacy Application",
     subtitle: "Modern Medication Ordering Platform",
@@ -41,7 +110,7 @@ const projects = [
       "Order History & Tracking",
       "User-friendly Mobile UI",
     ],
-    technologies: ["Flutter", "Provider", "Hive", "REST API", "Clean Architecture"],
+    technologies: ["Flutter", "GetX", "Hive", "REST API"],
     impact: [
       "60% faster ordering process",
       "Reduced user errors by 75%",
@@ -50,7 +119,7 @@ const projects = [
     gradient: "from-emerald-500 via-teal-500 to-cyan-500",
   },
   {
-    id: 3,
+    id: 5,
     icon: Warehouse,
     title: "Warehouse Automation System",
     subtitle: "Inventory Optimization Platform",
@@ -64,7 +133,7 @@ const projects = [
       "Error Detection & Prevention",
       "Performance Analytics",
     ],
-    technologies: ["Flutter", "GetX", "SQLite", "WebSocket", "Docker"],
+    technologies: ["Flutter", "Cubit", "React", "Redux", "Laravel"],
     impact: [
       "85% reduction in manual errors",
       "Real-time inventory visibility",
@@ -165,8 +234,114 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
 
 const ProjectsSection = () => {
   return (
-    <section id="projects" className="py-24 md:py-32">
-      <div className="container mx-auto px-6">
+    <section id="projects" className="py-24 md:py-32 relative overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute top-1/4 left-1/5 w-96 h-96 bg-primary/15 rounded-full blur-3xl"
+          animate={{
+            x: [0, 105, -70, 0],
+            y: [0, -85, 90, 0],
+            scale: [1, 1.26, 0.9, 1],
+            rotate: [0, 180, 360],
+          }}
+          transition={{
+            duration: 29,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 right-1/5 w-80 h-80 bg-purple-500/15 rounded-full blur-3xl"
+          animate={{
+            x: [0, -105, 85, 0],
+            y: [0, 110, -60, 0],
+            scale: [1, 1.3, 0.87, 1],
+            rotate: [0, -180, -360],
+          }}
+          transition={{
+            duration: 33,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1.1,
+          }}
+        />
+        <motion.div
+          className="absolute top-1/2 right-1/4 w-64 h-64 bg-primary/8 rounded-full blur-2xl"
+          animate={{
+            x: [0, 65, -45, 0],
+            y: [0, -95, 70, 0],
+            scale: [1, 1.35, 0.85, 1],
+            rotate: [0, 360],
+          }}
+          transition={{
+            duration: 24,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 0.5,
+          }}
+        />
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-2 h-2 rounded-full bg-primary/30"
+            style={{
+              left: `${8 + i * 11}%`,
+              top: `${12 + i * 11}%`,
+            }}
+            animate={{
+              y: [0, -140, 0],
+              x: [0, Math.sin(i * 0.9) * 80, 0],
+              opacity: [0.3, 0.8, 0.3],
+              scale: [1, 2, 1],
+            }}
+            transition={{
+              duration: 5.2 + i * 0.6,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.3,
+            }}
+          />
+        ))}
+        <motion.div
+          className="absolute top-1/3 right-1/6 w-30 h-30 border-2 border-primary/25 rounded-lg"
+          animate={{
+            rotate: [0, 360],
+            scale: [1, 1.4, 1],
+          }}
+          transition={{
+            duration: 19,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/3 left-1/6 w-22 h-22 border-2 border-purple-400/25 rounded-full"
+          animate={{
+            rotate: [360, 0],
+            scale: [1, 1.5, 1],
+          }}
+          transition={{
+            duration: 22,
+            repeat: Infinity,
+            ease: "linear",
+            delay: 1,
+          }}
+        />
+        <motion.div
+          className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
+          animate={{
+            x: ["-100%", "100%"],
+            opacity: [0.2, 0.6, 0.2],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
+      </div>
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -1,38 +1,132 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, MapPin, Download } from "lucide-react";
+import { Github, Mail, MapPin, Download, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const contactLinks = [
   {
     icon: Mail,
     label: "Email",
-    value: "hello@developer.com",
-    href: "mailto:hello@developer.com",
+    value: "ms6960852@gmail.com",
+    href: "mailto:ms6960852@gmail.com",
   },
   {
     icon: Github,
     label: "GitHub",
-    value: "github.com/developer",
-    href: "https://github.com",
+    value: "github.com/mohammedsalam22",
+    href: "https://github.com/mohammedsalam22",
   },
   {
-    icon: Linkedin,
-    label: "LinkedIn",
-    value: "linkedin.com/in/developer",
-    href: "https://linkedin.com",
+    icon: Facebook,
+    label: "Facebook",
+    value: "facebook.com/hmoda.slam",
+    href: "https://www.facebook.com/hmoda.slam",
   },
   {
     icon: MapPin,
     label: "Location",
-    value: "Open to Remote",
+    value: "Damascus, Syria",
     href: null,
   },
 ];
 
 const ContactSection = () => {
+  const handleResumeDownload = () => {
+    // Simple direct download approach
+    const link = document.createElement('a');
+    link.href = '/resume.pdf';
+    link.download = 'Mohammed_Salam_Resume.pdf';
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    document.body.appendChild(link);
+    link.click();
+    setTimeout(() => {
+      document.body.removeChild(link);
+    }, 100);
+  };
+
   return (
-    <section id="contact" className="py-24 md:py-32 bg-surface/50">
-      <div className="container mx-auto px-6">
+    <section id="contact" className="py-24 md:py-32 bg-surface/50 relative overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/12 rounded-full blur-3xl"
+          animate={{
+            x: [0, 95, -65, 0],
+            y: [0, -75, 85, 0],
+            scale: [1, 1.24, 0.91, 1],
+            rotate: [0, 180, 360],
+          }}
+          transition={{
+            duration: 27,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/12 rounded-full blur-3xl"
+          animate={{
+            x: [0, -95, 75, 0],
+            y: [0, 105, -55, 0],
+            scale: [1, 1.29, 0.86, 1],
+            rotate: [0, -180, -360],
+          }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 0.5,
+          }}
+        />
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1.5 h-1.5 rounded-full bg-purple-400/35"
+            style={{
+              left: `${14 + i * 13}%`,
+              top: `${16 + i * 14}%`,
+            }}
+            animate={{
+              y: [0, -125, 0],
+              x: [0, Math.cos(i * 0.75) * 65, 0],
+              opacity: [0.35, 0.75, 0.35],
+              scale: [1, 1.9, 1],
+            }}
+            transition={{
+              duration: 5 + i * 0.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.35,
+            }}
+          />
+        ))}
+        <motion.div
+          className="absolute top-1/3 left-1/5 w-28 h-28 border-2 border-purple-400/25 rounded-lg"
+          animate={{
+            rotate: [0, 360],
+            scale: [1, 1.38, 1],
+          }}
+          transition={{
+            duration: 18,
+            repeat: Infinity,
+            ease: "linear",
+            delay: 0.8,
+          }}
+        />
+        <motion.div
+          className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-400/30 to-transparent"
+          animate={{
+            x: ["100%", "-100%"],
+            opacity: [0.2, 0.6, 0.2],
+          }}
+          transition={{
+            duration: 9,
+            repeat: Infinity,
+            ease: "linear",
+            delay: 2,
+          }}
+        />
+      </div>
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -59,12 +153,10 @@ const ContactSection = () => {
             <Button
               size="lg"
               className="glow px-8 py-6 text-lg font-semibold"
-              asChild
+              onClick={handleResumeDownload}
             >
-              <a href="/resume.pdf" download>
-                <Download className="mr-2 h-5 w-5" />
-                Download My Resume
-              </a>
+              <Download className="mr-2 h-5 w-5" />
+              Download My Resume
             </Button>
           </motion.div>
 

@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 const navLinks = [
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
+  { label: "Experience", href: "#experience" },
+  { label: "Education", href: "#education" },
   { label: "Projects", href: "#projects" },
   { label: "Contact", href: "#contact" },
 ];
@@ -23,6 +25,20 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleResumeDownload = () => {
+    // Simple direct download approach
+    const link = document.createElement('a');
+    link.href = '/resume.pdf';
+    link.download = 'Mohammed_Salam_Resume.pdf';
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    document.body.appendChild(link);
+    link.click();
+    setTimeout(() => {
+      document.body.removeChild(link);
+    }, 100);
+  };
+
   return (
     <>
       <motion.nav
@@ -36,7 +52,7 @@ const Navbar = () => {
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between">
             <a href="#" className="text-2xl font-bold text-gradient">
-              Dev
+              Mohammed Salam
             </a>
 
             {/* Desktop Navigation */}
@@ -51,10 +67,8 @@ const Navbar = () => {
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
                 </a>
               ))}
-              <Button size="sm" className="glow-sm" asChild>
-                <a href="/resume.pdf" download>
-                  Resume
-                </a>
+              <Button size="sm" className="glow-sm" onClick={handleResumeDownload}>
+                Resume
               </Button>
             </div>
 
@@ -103,10 +117,8 @@ const Navbar = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.4 }}
                 >
-                  <Button size="lg" className="w-full glow" asChild>
-                    <a href="/resume.pdf" download>
-                      Download Resume
-                    </a>
+                  <Button size="lg" className="w-full glow" onClick={handleResumeDownload}>
+                    Download Resume
                   </Button>
                 </motion.div>
               </div>
